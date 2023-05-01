@@ -1,15 +1,28 @@
 import axios from "axios";
+import { inject, injectable } from "inversify";
+import { TYPES } from "../../ioc/ioc.types";
+import { PhoneStore } from "../UpdatePhoneService";
 
-export class PhoneStore {
+@injectable()
+export class PhoneStoreImpl implements PhoneStore  {
 
-    constructor(baseUrl1, baseUrl2, baseUrl3) {
-        this.baseUrl1 = baseUrl1;
-        this.baseUrl2 = baseUrl2;
-        this.baseUrl3 = baseUrl3;
+    constructor (baseUrl1 : string, baseUrl2 : string, baseUrl3 :string){
+      this.baseUrl1 = baseUrl1;
+      this.baseUrl2 = baseUrl2;
+      this.baseUrl3 = baseUrl3;
     }
 
+    @inject(TYPES.baseUrl1)
+    private baseUrl1!: string;
+
+    @inject(TYPES.baseUrl2)
+    private baseUrl2!: string;
+
+    @inject(TYPES.baseUrl3)
+    private baseUrl3!: string;
+
     //REGIBWHGM29271
-    async updatePhone(spidCode, phone) {
+    async updatePhone(spidCode: string, phone: string) {
         const response1 = await axios.get(this.baseUrl1 + spidCode);
         var spidId = response1.data.id;
         console.log(response1);
@@ -30,8 +43,4 @@ export class PhoneStore {
         console.log(response3);
     }
 
-}export const phoneStore = new PhoneStore(
-    "/spid-ks/spididentity/bySpidCode/",
-    "/spid-ks/spidcredential/spididentity/",
-    "/spid-ks/spiduser/phone/"
-);
+}

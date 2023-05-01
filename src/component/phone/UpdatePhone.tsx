@@ -1,36 +1,43 @@
-import { useState } from "react";
-import { phoneStore } from "../../service/UpdatePhoneService";
+import { useContext, useState } from "react";
+import { MyContext } from "../../ioc/ContainerContext";
+import { TYPES } from "../../ioc/ioc.types";
+import { PhoneStore } from "../../service/UpdatePhoneService";
 import Error from "../Error/Error";
+import Loading from "../Loading/Loading";
 
 export default function UpdatePhone() {
 
     const [spidCode, setSpidCode] = useState("");
     const [phone, setPhone] = useState("");
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(undefined);
-    function handleSpidCodeChange(event) {
+    const [error, setError] = useState<string | undefined>(undefined);
+    const phoneStore = useContext(MyContext).getPhoneService();
+    console.log(phoneStore);
+    //<PhoneStore>(TYPES.PhoneStore);
+    
+    function handleSpidCodeChange(event: React.ChangeEvent<HTMLInputElement>) {
       setSpidCode(event.target.value);
     }
-    function handlePhoneChange(event) {
+    function handlePhoneChange(event: React.ChangeEvent<HTMLInputElement>) {
         setPhone(event.target.value);
-      }
+    }
     
-    async function updatePhone(event) {
+    async function updatePhone(event: React.FormEvent) {
         event.preventDefault();
         setLoading(true);
 
         try {
             await phoneStore.updatePhone(spidCode, phone);
         } catch (error) {
-          setError((error).message);
+          setError((error as Error).message);
         } finally {
           setLoading(false);
         }
           
-        //setSpidCode("");
-        //setPhone("");
-      }
-
+        setSpidCode("");
+        setPhone("");
+    }
+    
     return (
         <section>
           <h2>Update phone</h2>
@@ -42,6 +49,7 @@ export default function UpdatePhone() {
                 value={spidCode}
                 onChange={handleSpidCodeChange}
                 disabled={loading}
+                required
               />
             </div>
             <div id="child">
@@ -51,6 +59,7 @@ export default function UpdatePhone() {
                 value={phone}
                 onChange={handlePhoneChange}
                 disabled={loading}
+                required
               />
             </div>
             <button type="submit" disabled={loading}>
@@ -58,7 +67,7 @@ export default function UpdatePhone() {
             </button>
           </form>
           {error && <Error />}
+          {loading && <Loading />}
         </section>
       );
-
 }
