@@ -1,7 +1,5 @@
 import { useContext, useState } from "react";
 import { MyContext } from "../../ioc/ContainerContext";
-import { TYPES } from "../../ioc/ioc.types";
-import { PhoneStore } from "../../service/UpdatePhoneService";
 import Error from "../Error/Error";
 import Loading from "../Loading/Loading";
 

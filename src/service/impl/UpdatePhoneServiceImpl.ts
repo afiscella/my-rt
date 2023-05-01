@@ -1,25 +1,17 @@
 import axios from "axios";
-import { inject, injectable } from "inversify";
-import { TYPES } from "../../ioc/ioc.types";
 import { PhoneStore } from "../UpdatePhoneService";
 
-@injectable()
 export class PhoneStoreImpl implements PhoneStore  {
+
+    baseUrl1: string;
+    baseUrl2: string;
+    baseUrl3: string;
 
     constructor (baseUrl1 : string, baseUrl2 : string, baseUrl3 :string){
       this.baseUrl1 = baseUrl1;
       this.baseUrl2 = baseUrl2;
       this.baseUrl3 = baseUrl3;
     }
-
-    @inject(TYPES.baseUrl1)
-    private baseUrl1!: string;
-
-    @inject(TYPES.baseUrl2)
-    private baseUrl2!: string;
-
-    @inject(TYPES.baseUrl3)
-    private baseUrl3!: string;
 
     //REGIBWHGM29271
     async updatePhone(spidCode: string, phone: string) {
