@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { MyContext } from "../../ioc/ContainerContext";
+import { PhoneContext } from "../../ioc/PhoneContext";
 import Error from "../Error/Error";
 import Loading from "../Loading/Loading";
 
@@ -9,9 +9,9 @@ export default function UpdatePhone() {
     const [phone, setPhone] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | undefined>(undefined);
-    const phoneStore = useContext(MyContext).getPhoneService();
+    const phoneStore = useContext(PhoneContext).getPhoneService();
+    
     console.log(phoneStore);
-    //<PhoneStore>(TYPES.PhoneStore);
     
     function handleSpidCodeChange(event: React.ChangeEvent<HTMLInputElement>) {
       setSpidCode(event.target.value);
