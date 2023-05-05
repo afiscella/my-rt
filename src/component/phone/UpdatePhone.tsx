@@ -1,8 +1,10 @@
-import { useContext, useState } from "react";
-import { PhoneContext } from "../../ioc/PhoneContext";
+import { useState } from "react";
 import Error from "../Error/Error";
 import Loading from "../Loading/Loading";
-import Container from "../../ioc/Container";
+import { PhoneStore } from "../../service/UpdatePhoneService";
+import { useInject } from "../../ioc/useInject";
+import { types } from "../../ioc/Types";
+
 
 export default function UpdatePhone() {
 
@@ -10,7 +12,7 @@ export default function UpdatePhone() {
     const [phone, setPhone] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | undefined>(undefined);
-    const phoneStore = useContext(PhoneContext).get(Container.phoneServiceIdentifier);
+    const phoneStore = useInject<PhoneStore>(types.PHONE_STORE);
     
     console.log(phoneStore);
     

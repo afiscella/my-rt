@@ -1,19 +1,19 @@
 import Header from "./component/Header/Header";
-import { PhoneContext } from "./ioc/PhoneContext";
+import { ApplicationContext } from "./ioc/PhoneContext";
 import IndexPage from "./pages/IndexPage";
-import Container from "./ioc/Container";
+import createContainer from "./ioc/ioc";
 
-const container = new Container();
+const container = createContainer()
 
 function App() {
 
   return (
-    <PhoneContext.Provider value={container} >
+    <ApplicationContext.Provider value={container} >
       <div className="App">
         <Header />
         <IndexPage />
       </div>
-    </PhoneContext.Provider>
+    </ApplicationContext.Provider>
   );
 }
 

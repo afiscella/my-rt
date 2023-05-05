@@ -1,4 +1,4 @@
 import React from "react";
-import Container from "./Container";
+import { Container } from "./Container";
 
-export const PhoneContext = React.createContext<Container>(new Container());
+export const ApplicationContext = React.createContext<Container>(null as any);
