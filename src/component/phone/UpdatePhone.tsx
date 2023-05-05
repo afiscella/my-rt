@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { PhoneContext } from "../../ioc/PhoneContext";
 import Error from "../Error/Error";
 import Loading from "../Loading/Loading";
+import Container from "../../ioc/Container";
 
 export default function UpdatePhone() {
 
@@ -9,7 +10,7 @@ export default function UpdatePhone() {
     const [phone, setPhone] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | undefined>(undefined);
-    const phoneStore = useContext(PhoneContext).getPhoneService();
+    const phoneStore = useContext(PhoneContext).get(Container.phoneServiceIdentifier);
     
     console.log(phoneStore);
     
