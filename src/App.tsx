@@ -1,6 +1,7 @@
 import Header from "./component/Header/Header";
-import { ApplicationContext } from "./ioc/PhoneContext";
-import IndexPage from "./pages/IndexPage";
+import { ApplicationContext } from "./ioc/MyRtContext";
+import PhonePage from "./pages/PhonePage";
+import EmailPage from "./pages/EmailPage";
 import createContainer from "./ioc/ioc";
 
 const container = createContainer()
@@ -11,7 +12,8 @@ function App() {
     <ApplicationContext.Provider value={container} >
       <div className="App">
         <Header />
-        <IndexPage />
+        <PhonePage />
+        <EmailPage />
       </div>
     </ApplicationContext.Provider>
   );

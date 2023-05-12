@@ -1,5 +1,6 @@
 export const config = {
-    baseUrl1: "/spid-ks/spididentity/bySpidCode/",
-    baseUrl2: "/spid-ks/spidcredential/spididentity/",
-    baseUrl3: "/spid-ks/spiduser/phone/"
+    spidIdentityBaseUrl: "/spid-ks/spididentity/bySpidCode/",
+    spidCredentialBaseUrl: "/spid-ks/spidcredential/spididentity/",
+    updatePhoneBaseUrl: "/spid-ks/spiduser/phone/",
+    updateEmailBaseUrl: "/spid-ks/spiduser/email/"
 }
