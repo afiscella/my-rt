@@ -1,3 +1,3 @@
-export default function IndexNoPagePage() {
+export default function NoPage() {
     return <h1>404</h1>;
   };
