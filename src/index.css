@@ -33,11 +33,3 @@ main {
   border-radius: 3px;
 }
 
-.updatePhoneInput, .updateEmailInput {
-  margin-bottom: 16px;
-}
-
-.updatePhoneLabel, .updateEmailLabel {
-  margin-top: 0px;
-  margin-bottom: 6px;
-}

@@ -1,4 +1,4 @@
-import UpdatePhone from "../component/phone/UpdatePhone";
+import UpdatePhone from "../component/Phone/UpdatePhone";
 
 export default function PhonePage() {
   return (

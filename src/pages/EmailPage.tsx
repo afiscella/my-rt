@@ -1,4 +1,4 @@
-import UpdateEmail from "../component/email/UpdateEmail";
+import UpdateEmail from "../component/Email/UpdateEmail";
 
 export default function EmailPage() {
   return (
