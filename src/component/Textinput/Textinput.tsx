@@ -6,15 +6,16 @@ interface TextinputProps
     HTMLInputElement
   > {
   label: string;
+  additionalClasses?: string;
 }
 
 export default function Textinput(props: TextinputProps) {
-  const { label, ...otherProps } = props;
+  const { label, additionalClasses, ...otherProps } = props;
 
   return (
     <div id="child">
       <h5 className="textInputLabel">{label}</h5>
-      <input {...otherProps} className="textInput" type="text" />
+      <input {...otherProps} className={`textInput ${additionalClasses}`} type="text" />
     </div>
   );
 }

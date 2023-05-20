@@ -44,6 +44,7 @@ export default function UpdatePhone() {
       <form id="parent" onSubmit={updatePhone}>
         <Textinput
           label="SpidCode:"
+          additionalClasses="lightblue blueBorder"
           value={spidCode}
           onChange={handleSpidCodeChange}
           disabled={loading}

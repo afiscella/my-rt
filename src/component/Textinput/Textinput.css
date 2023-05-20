@@ -6,3 +6,12 @@
   margin-top: 0px;
   margin-bottom: 6px;
 }
+
+.lightblue {
+  background-color: lightblue !important;
+}
+
+.blueBorder {
+  border-style: dotted;
+  border-color: blue;
+}
